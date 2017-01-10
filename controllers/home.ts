@@ -1,5 +1,5 @@
 import {Assets} from "../components/assets";
-import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router, StatusCode} from "typeix";
+import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router, Status} from "typeix";
 import {Cache} from "../filters/cache";
 import {CoreController} from "./core";
 
@@ -54,7 +54,7 @@ export class HomeController extends CoreController {
   @Action("redirect")
   async redirect() {
     let url = await this.router.createUrl("home/index", {});
-    return this.request.redirectTo(url, StatusCode.Temporary_Redirect);
+    return this.request.redirectTo(url, Status.Temporary_Redirect);
   }
 
   /**
