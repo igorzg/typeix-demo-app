@@ -3,9 +3,11 @@ This is runnable example, preview of application development with typeix
 
 ### Running demo:
 * Checkout repo
-* cd demo-app
-* npm install
-* npm run demo
+
+```npm
+npm install
+npm run demo
+```
 
 Typeix has dependency injection inspired by Angular 2
 
