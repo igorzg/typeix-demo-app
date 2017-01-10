@@ -35,5 +35,5 @@ Typeix has dependency injection inspired by Angular 2
 * MVC structure
 * Component driven -> singletons -> depends on injection level
 * Request Filters
-* Nice routing features -> supports static && dynamic routing
+* Nice routing features -> supports static && dynamic routing && reverse router
 * Controller inheritance
