@@ -26,3 +26,13 @@ Typeix has dependency injection inspired by Angular 2
 * http://localhost:9000/100/parameter
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
+
+
+## Typeix Features
+* Dependency Injection - similar to JSR 330 standard
+* Modular design
+* MVC structure
+* Component driven -> singletons -> depends on injection level
+* Request Filters
+* Nice routing features -> supports static && dynamic routing
+* Controller inheritance

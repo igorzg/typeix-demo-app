@@ -17,6 +17,7 @@ export class Assets {
    * @return {String}
    */
   static publicPath(name: string): string {
+    name = normalize(name);
     return normalize(__dirname + "/../../public/" + name);
   }
 
