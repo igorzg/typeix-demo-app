@@ -1,8 +1,7 @@
 import {Assets} from "../components/assets";
-import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, Param} from "typeix";
-import {ViewController} from "./view";
+import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router, StatusCode} from "typeix";
 import {Cache} from "../filters/cache";
-import {ChainFilter} from "../filters/chain";
+import {CoreController} from "./core";
 
 /**
  * Controller example
@@ -13,14 +12,15 @@ import {ChainFilter} from "../filters/chain";
  * @description
  * Define controller, assign action and inject your services.
  * Each request create new instance of controller, your Injected type is injected by top level injector if is not defined
- * as local instance as providers to this controllers
+ * as local instance as providers to this controllers.
+ *
+ * Controllers can be Inherited by thy don't necessary need's to be inherited
  */
 @Controller({
   name: "home",
-  filters: [Cache, ChainFilter],
-  providers: [] // type of local instances within new request since controller is instanciated on each request
+  filters: [Cache]
 })
-export class HomeController extends ViewController {
+export class HomeController extends CoreController {
 
   /**
    * @param {Assets} assetLoader
@@ -37,19 +37,32 @@ export class HomeController extends ViewController {
   @Inject(Request)
   request: Request;
 
+  /**
+   * @param {Router} router
+   * @description
+   * Router reflection
+   */
+  @Inject(Router)
+  router: Router;
+  /**
+   * @function
+   * @name redirect
+   *
+   * @description
+   * Redirection example
+   */
+  @Action("redirect")
+  async redirect() {
+    let url = await this.router.createUrl("home/index", {});
+    return this.request.redirectTo(url, StatusCode.Temporary_Redirect);
+  }
 
   /**
    * @function
-   * @name actionIndex
+   * @name actionId
    *
    * @description
    * There is no naming convention of function names only what is required to define action is \@Action metadata
-   *
-   * @example
-   * \@Action("index")
-   *  iIgnoreNamingConvention(): string {
-   *    return "Only important fact is a \@Action param";
-   * }
    *
    */
   @Action("id")
@@ -62,8 +75,11 @@ export class HomeController extends ViewController {
    * @name BeforeEach
    *
    * @description
-   * before each
+   * before each action chain, action chains in following order if annotations are pressent
    *
+   * \@FiltersInOrderBefore -> \@BeforeEach -> \@Before(action) -> \@Action(action) -> \@After(action) -> \@AfterEach -> \@FiltersInOrderAfter
+   * Chain can be stopped at any level, chains are not required to be implemented !
+   * Frameworks only search for \@Action("name")
    */
   @BeforeEach
   beforeEachAction(@Chain data: string): string {
@@ -71,21 +87,18 @@ export class HomeController extends ViewController {
   }
   /**
    * @function
-   * @name actionIndex
+   * @name beforeIndex
    *
    * @description
-   * There is no naming convention of function names only what is required to define action is \@Action metadata
+   * Before index action chain
    *
-   * @example
-   * \@Action("index")
-   *  iIgnoreNamingConvention(): string {
-   *    return "Only important fact is a \@Action param";
-   * }
-   *
+   * \@FiltersInOrderBefore -> \@BeforeEach -> \@Before(action) -> \@Action(action) -> \@After(action) -> \@AfterEach -> \@FiltersInOrderAfter
+   * Chain can be stopped at any level, chains are not required to be implemented !
+   * Frameworks only search for \@Action("name")
    */
-  @Before("index")
+  @Action("index")
   beforeIndex(@Chain data: string): string {
-    return "Before index home: <- " + data;
+    return "Action index home: <- " + data;
   }
 
 }

@@ -19,6 +19,8 @@ import {lookup} from "mime";
  * Define controller, assign action and inject your services.
  * Each request create new instance of controller, your Injected type is injected by top level injector if is not defined
  * as local instance as providers to this controllers
+ *
+ * Controllers can be Inherited by thy don't necessary need's to be inherited
  */
 @Controller({
   name: "core",

@@ -2,7 +2,6 @@ import {Module, Logger, Inject, IAfterConstruct, Router, Methods} from "typeix";
 import {Assets} from "./components/assets";
 import {CoreController} from "./controllers/core";
 import {HomeController} from "./controllers/home";
-import {ViewController} from "./controllers/view";
 import {AdminModule} from "./modules/admin/admin.module";
 /**
  * Application entry point
@@ -14,9 +13,9 @@ import {AdminModule} from "./modules/admin/admin.module";
  * \@Module is used to define application entry point class
  */
 @Module({
-  imports: [AdminModule],
-  controllers: [ViewController, CoreController, HomeController],
-  providers: [Logger, Router, Assets]
+  imports: [AdminModule], // bootstrap in recursive top level order
+  controllers: [HomeController, CoreController], // no order
+  providers: [Logger, Router, Assets] // in order processed
 })
 export class Application implements IAfterConstruct {
 
@@ -83,6 +82,11 @@ export class Application implements IAfterConstruct {
         methods: [Methods.GET],
         route: "home/index",
         url: "/"
+      },
+      {
+        methods: [Methods.GET],
+        route: "home/redirect",
+        url: "/redirect-to-home"
       }
     ]);
   }

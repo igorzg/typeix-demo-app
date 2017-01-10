@@ -24,6 +24,7 @@ Typeix has dependency injection inspired by Angular 2
 * http://localhost:9000/
 * http://localhost:9000/admin
 * http://localhost:9000/100/parameter
+* http://localhost:9000/redirect-to-home
 * http://localhost:9000/favicon.ico
 * http://localhost:9000/assets/favicon.ico
 
