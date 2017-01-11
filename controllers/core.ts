@@ -6,7 +6,9 @@ import {
   Controller,
   Param,
   Request,
-  OnError
+  ErrorMessage,
+  OnError,
+  HttpError
 } from "typeix";
 import {lookup} from "mime";
 /**
@@ -42,7 +44,25 @@ export class CoreController {
    */
   @Inject(Request)
   request: Request;
+  /**
+   * @param {HttpError} message
+   * @description
+   * Error route handler
+   */
+  @Action("error")
+  actionError(@ErrorMessage error: HttpError) {
+    return "ERROR -> " + error.getCode() + " : " + error.getMessage();
+  }
 
+  /**
+   * @param {HttpError} message
+   * @description
+   * Error route handler
+   */
+  @Action("fire")
+  actionFireError() {
+    throw new HttpError(500, "ERROR FIRE");
+  }
   /**
    * @function
    * @name fileLoadAction

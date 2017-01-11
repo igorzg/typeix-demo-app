@@ -47,8 +47,16 @@ export class AdminModule implements IAfterConstruct {
         methods: [Methods.GET],
         route: "admin/home/index",
         url: "/admin"
+      },
+      {
+        methods: [Methods.GET],
+        route: "admin/home/error",
+        url: "/admin/throw-error"
       }
     ]);
+
+
+    this.router.setError("admin/home/error");
 
   }
 }

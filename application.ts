@@ -87,7 +87,15 @@ export class Application implements IAfterConstruct {
         methods: [Methods.GET],
         route: "home/redirect",
         url: "/redirect-to-home"
+      },
+      {
+        methods: [Methods.GET],
+        route: "core/error",
+        url: "/throw-error"
       }
     ]);
+
+
+    this.router.setError("core/error");
   }
 }

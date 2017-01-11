@@ -1,4 +1,4 @@
-import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, Param} from "typeix";
+import {Inject, Action, Controller, Request, Before, Chain, BeforeEach, Param, HttpError, ErrorMessage} from "typeix";
 
 /**
  * Controller example
@@ -26,6 +26,27 @@ export class HomeController {
   @Inject(Request)
   request: Request;
 
+
+  /**
+   * @param {HttpError} message
+   * @description
+   * Error route handler
+   */
+  @Action("error")
+  actionError(@ErrorMessage error: HttpError) {
+    return "ADMIN -> ERROR -> " + error.getCode() + " : " + error.getMessage();
+  }
+
+
+  /**
+   * @param {HttpError} message
+   * @description
+   * Error route handler
+   */
+  @Action("fire")
+  actionFireError() {
+    throw new HttpError(500, "ERROR FIRE");
+  }
 
   /**
    * @function
