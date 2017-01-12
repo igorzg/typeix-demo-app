@@ -1,4 +1,4 @@
-import {Module, Logger, Inject, IAfterConstruct, Router, Methods} from "typeix";
+import {Module, Logger, Inject, IAfterConstruct, Router, Methods, LogLevels} from "typeix";
 import {Assets} from "./components/assets";
 import {CoreController} from "./controllers/core";
 import {HomeController} from "./controllers/home";
@@ -55,6 +55,7 @@ export class Application implements IAfterConstruct {
 
     this.logger.enable();
     this.logger.printToConsole();
+    this.logger.setDebugLevel(LogLevels.BENCHMARK);
     this.logger.info("Application.arg", this.assetLoader);
 
     this.router.addRules([
