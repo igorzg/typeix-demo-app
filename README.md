@@ -34,7 +34,7 @@ Typeix has dependency injection inspired by Angular 2
 
 
 ## Typeix Features
-* Dependency Injection - similar to JSR 330 standard
+* Dependency Injection - @Inject JSR 330 standard
 * Modular design
 * MVC structure
 * Component driven -> singletons -> depends on injection level
