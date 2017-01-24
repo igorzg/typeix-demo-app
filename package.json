@@ -20,7 +20,7 @@
     "typescript": "^2.1.0"
   },
   "dependencies": {
-    "typeix": "^1.0.0-alpha-37",
+    "typeix": "^1.0.0-beta.1",
     "mime": "^1.3.4"
   }
 }
