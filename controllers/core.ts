@@ -91,4 +91,22 @@ export class CoreController {
     return this.assetLoader.load(file);
   }
 
+
+  /**
+   * @function
+   * @name dynamicRouterExample
+   *
+   * @description
+   * Dynamic router example
+   */
+  @Action("not_found")
+  @Produces("application/json")
+  dynamicRouterExample(): string {
+    let params = {
+      message: "NOT FOUND WITH DYNAMIC ROUTER EXAMPLE",
+      params: this.request.getParams()
+    };
+    return JSON.stringify(params);
+  }
+
 }

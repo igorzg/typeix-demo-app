@@ -5,6 +5,7 @@ import {HomeController} from "./controllers/home";
 import {AdminModule} from "./modules/admin/admin.module";
 import {TemplateEngine} from "./components/mu2";
 import {InMemoryCache} from "./components/in-memory-cache";
+import {DynamicRouteRule} from "./components/dynamic-router";
 /**
  * Application entry point
  * @constructor
@@ -98,7 +99,7 @@ export class Application implements IAfterConstruct {
       }
     ]);
 
-
+    this.router.addRule(DynamicRouteRule);
     this.router.setError("core/error");
   }
 }
