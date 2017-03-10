@@ -1,4 +1,5 @@
-import {IFilter, Filter, Request, Inject} from "typeix";
+import {IFilter, Filter, Request, Inject, Logger} from "typeix";
+import {InMemoryCache} from "../components/in-memory-cache";
 
 /**
  * @constructor
@@ -10,6 +11,15 @@ import {IFilter, Filter, Request, Inject} from "typeix";
  */
 @Filter(100)
 export class Cache implements IFilter {
+
+  /**
+   * @param {Logger} logger
+   * @description
+   * Logger
+   */
+  @Inject(Logger)
+  logger: Logger;
+
   /**
    * @param {Request} request
    * @description
@@ -19,6 +29,14 @@ export class Cache implements IFilter {
   request: Request;
 
   /**
+   * @param {InMemoryCache} cacheProvider
+   * @description
+   * InMemoryCache
+   */
+  @Inject(InMemoryCache)
+  cacheProvider: InMemoryCache;
+
+  /**
    * @function
    * @name Cache#before
    *
@@ -26,6 +44,10 @@ export class Cache implements IFilter {
    * Before each controller
    */
   before(data: string): string|Buffer|Promise<string|Buffer> {
+    if (this.cacheProvider.has(this.request.getRoute())) {
+      this.request.stopChain();
+      return this.cacheProvider.get(this.request.getRoute());
+    }
     return "Before cache controller filter <-" + data;
   }
   /**
@@ -36,7 +58,9 @@ export class Cache implements IFilter {
    * Before each controller apply this filter
    */
   after(data: string): string|Buffer|Promise<string|Buffer> {
-    return "After cache controller filter <- " + data;
+    this.cacheProvider.set(this.request.getRoute(), data, 5); // Five seconds cache
+    this.logger.warn("TRIGGER CACHE", data);
+    return data;
   }
 
 }

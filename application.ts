@@ -3,6 +3,8 @@ import {Assets} from "./components/assets";
 import {CoreController} from "./controllers/core";
 import {HomeController} from "./controllers/home";
 import {AdminModule} from "./modules/admin/admin.module";
+import {TemplateEngine} from "./components/mu2";
+import {InMemoryCache} from "./components/in-memory-cache";
 /**
  * Application entry point
  * @constructor
@@ -15,7 +17,7 @@ import {AdminModule} from "./modules/admin/admin.module";
 @Module({
   imports: [AdminModule], // bootstrap in recursive top level order
   controllers: [HomeController, CoreController], // no order
-  providers: [Logger, Router, Assets] // in order processed
+  providers: [Logger, Router, Assets, TemplateEngine, InMemoryCache] // in order processed
 })
 export class Application implements IAfterConstruct {
 

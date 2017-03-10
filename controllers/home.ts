@@ -2,6 +2,7 @@ import {Assets} from "../components/assets";
 import {Inject, Action, Controller, Request, Chain, BeforeEach, Param, Router, Status} from "typeix";
 import {Cache} from "../filters/cache";
 import {CoreController} from "./core";
+import {TemplateEngine} from "../components/mu2";
 
 /**
  * Controller example
@@ -45,6 +46,14 @@ export class HomeController extends CoreController {
   @Inject(Router)
   router: Router;
   /**
+   * @param {TemplateEngine} engine
+   * @description
+   * Inject template engine
+   */
+  @Inject(TemplateEngine)
+  engine: TemplateEngine;
+
+  /**
    * @function
    * @name redirect
    *
@@ -66,8 +75,16 @@ export class HomeController extends CoreController {
    *
    */
   @Action("id")
-  actionId(@Param("id") id: number, @Chain data: string, @Param("name") name: string): string {
-    return `Action id: ${id} name: ${name} <- ${data}`;
+  actionId(
+      @Param("id") id: number,
+      @Chain data: string,
+      @Param("name") name: string): Promise<string> {
+    return this.engine.compileAndRender("home_id", {
+      data,
+      id,
+      name,
+      title: "Template engine with typeix"
+    });
   }
 
   /**
@@ -97,8 +114,13 @@ export class HomeController extends CoreController {
    * Frameworks only search for \@Action("name")
    */
   @Action("index")
-  beforeIndex(@Chain data: string): string {
-    return "Action index home: <- " + data;
+  beforeIndex(@Chain data: string): Promise<string> {
+    return this.engine.compileAndRender("home_id", {
+      data,
+      id: "NO_ID",
+      name: "this is home page",
+      title: "Home page example"
+    });
   }
 
 }
