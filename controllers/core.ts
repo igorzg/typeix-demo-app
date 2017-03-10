@@ -7,7 +7,6 @@ import {
   Param,
   Request,
   ErrorMessage,
-  OnError,
   HttpError
 } from "typeix";
 import {lookup} from "mime";
@@ -86,7 +85,6 @@ export class CoreController {
    *
    */
   @Action("assets")
-  @OnError(500, JSON.stringify({message: "File don't exists"}))
   fileLoadAction(@Param("file") file: string): Promise<Buffer> {
     let type = lookup(Assets.publicPath(file));
     this.request.setContentType(type);

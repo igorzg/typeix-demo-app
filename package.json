@@ -5,7 +5,8 @@
     "test:intergration": "npm run compile && mocha build/tests/intergration/ --debug --full-trace",
     "test": "npm run test:intergration",
     "compile": "tsc -p tsconfig.json",
-    "demo": "npm run compile && node build/bootstrap.js"
+    "demo": "npm run compile && node build/bootstrap.js",
+    "start": "npm run demo"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
@@ -20,7 +21,7 @@
     "typescript": "^2.1.0"
   },
   "dependencies": {
-    "typeix": "^1.0.0-beta.1",
+    "typeix": "^1.0.0-beta.4",
     "mime": "^1.3.4"
   }
 }
