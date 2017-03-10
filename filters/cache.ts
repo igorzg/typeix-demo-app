@@ -58,7 +58,7 @@ export class Cache implements IFilter {
    * Before each controller apply this filter
    */
   after(data: string): string|Buffer|Promise<string|Buffer> {
-    this.cacheProvider.set(this.request.getRoute(), data, 5); // Five seconds cache
+    this.cacheProvider.set(this.request.getRoute(), data, 10); // 10 seconds cache
     this.logger.warn("TRIGGER CACHE", data);
     return data;
   }
