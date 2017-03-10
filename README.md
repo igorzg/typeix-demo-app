@@ -8,7 +8,7 @@ This is runnable example, preview of application development with typeix
 
 ```npm
 npm install
-npm run demo
+npm start
 ```
 
 Typeix has dependency injection inspired by Angular 2
@@ -34,7 +34,7 @@ Typeix has dependency injection inspired by Angular 2
 
 
 ## Typeix Features
-* Dependency Injection - @Inject JSR 330 standard
+* Dependency Injection - @Inject
 * Modular design
 * MVC structure
 * Component driven -> singletons -> depends on injection level
