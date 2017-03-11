@@ -7,7 +7,7 @@ import {
   Param,
   Request,
   ErrorMessage,
-  HttpError
+  HttpError, Status
 } from "typeix";
 import {lookup} from "mime";
 /**
@@ -102,6 +102,7 @@ export class CoreController {
   @Action("not_found")
   @Produces("application/json")
   dynamicRouterExample(): string {
+    this.request.setStatusCode(Status.Not_Found);
     let params = {
       message: "NOT FOUND WITH DYNAMIC ROUTER EXAMPLE",
       params: this.request.getParams()
