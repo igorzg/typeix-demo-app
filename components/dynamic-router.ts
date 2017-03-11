@@ -1,4 +1,4 @@
-import {Route, Injectable, IResolvedRoute, Inject, Methods} from "typeix";
+import {Route, Injectable, IResolvedRoute, Inject, Methods, Headers} from "typeix";
 import {InMemoryCache} from "./in-memory-cache";
 /**
  * Dynamic route rule
