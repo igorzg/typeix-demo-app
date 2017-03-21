@@ -41,3 +41,5 @@ Typeix has dependency injection inspired by Angular 2
 * Request Filters
 * Nice routing features -> supports static && dynamic routing && reverse router
 * Controller inheritance
+
+[<< back](http://www.igorivanovic.info/)
