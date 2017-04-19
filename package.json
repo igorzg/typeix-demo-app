@@ -24,6 +24,6 @@
   "dependencies": {
     "mime": "^1.3.4",
     "mu2": "^0.5.21",
-    "typeix": "^1.0.0-beta.8"
+    "typeix": "^1.0.0-beta.12"
   }
 }
