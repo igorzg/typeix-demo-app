@@ -18,8 +18,7 @@
     ]
   },
   "include": [
-    "typings/index.d.ts",
-    "**/*.ts"
+    "src/**/*.ts"
   ],
   "exclude": [
     "build",

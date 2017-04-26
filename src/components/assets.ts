@@ -18,7 +18,7 @@ export class Assets {
    */
   static publicPath(name: string): string {
     name = normalize(name);
-    return normalize(__dirname + "/../../public/" + name);
+    return normalize(process.cwd() + "/../views/" + name + ".mustache");
   }
 
   /**
