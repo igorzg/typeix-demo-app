@@ -19,7 +19,7 @@ export class TemplateEngine {
      * @return {String}
      */
     static getTemplatePath(name: String): string {
-        return normalize(__dirname + "/../../views/" + name + ".mustache");
+        return  normalize(process.cwd() + "/views/" + name + ".mustache");
     }
 
     /**
