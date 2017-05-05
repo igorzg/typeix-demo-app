@@ -11,7 +11,7 @@
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.32",
-    "@types/node": "^7.0.13",
+    "@types/node": "^7.0.16",
     "@types/sinon": "^2.1.3",
     "@types/sinon-chai": "^2.7.27",
     "@types/mu2": "0.0.29",
@@ -24,6 +24,6 @@
   "dependencies": {
     "mime": "^1.3.4",
     "mu2": "^0.5.21",
-    "typeix": "^1.0.0-beta.13"
+    "typeix": "^1.0.0-beta.21"
   }
 }
