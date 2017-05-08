@@ -2,8 +2,9 @@
   "name": "demo-app",
   "version": "0.0.1",
   "scripts": {
+    "test:unit": "npm run compile && mocha build/tests/unit/ --debug --full-trace",
     "test:intergration": "npm run compile && mocha build/tests/intergration/ --debug --full-trace",
-    "test": "npm run test:intergration",
+    "test": "npm run test:intergration && npm run test:unit",
     "compile": "tsc -p tsconfig.json",
     "demo": "npm run compile && node build/bootstrap.js",
     "start": "npm run demo"
