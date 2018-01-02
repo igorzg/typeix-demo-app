@@ -11,4 +11,6 @@ import {httpServer} from "typeix";
  * We always use separate bootstrap file to bootstrap application because of testing or server side fakeHttp feature.
  * We will be able to simulate server side request with fakeHttp
  */
-httpServer(Application, 9000);
+httpServer(Application, {
+    port: 9000
+});

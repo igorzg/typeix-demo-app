@@ -16,6 +16,7 @@
     "@types/sinon": "^2.1.3",
     "@types/sinon-chai": "^2.7.27",
     "@types/mu2": "0.0.29",
+    "@types/ws": "^3.2.1",
     "chai": "^3.5.0",
     "mocha": "^3.0.2",
     "sinon": "^2.1.0",
@@ -25,6 +26,6 @@
   "dependencies": {
     "mime": "^1.3.4",
     "mu2": "^0.5.21",
-    "typeix": "^1.0.0"
+    "typeix": "^2.0.0-rc.0"
   }
 }
